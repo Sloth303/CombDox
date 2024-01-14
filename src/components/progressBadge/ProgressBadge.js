@@ -14,7 +14,7 @@ export const ProgressBadge = (props) => {
         console.log("ProgressBadge: badgeSrc is undefined")
         return
     }
-return <div
+return (<div
     style={{
         position: "relative",
         backgroundColor: props.badgeBgColor,
@@ -58,7 +58,7 @@ return <div
         />
     </div>
 </div>
-
+)
 }
 
 const CircularProgressBar=(props)=>{
