@@ -1,0 +1,18 @@
+{
+  "name": "combdox",
+  "version": "0.0.1",
+  "description": "just another open source JS UI Component library",
+  "main": "CombDox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "CombDox"
+  },
+  "keywords": [
+    "UI"
+  ],
+  "author": "Emmanuel Tzavolakis",
+  "license": "GPL-3.0"
+}
