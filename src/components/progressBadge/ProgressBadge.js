@@ -8,6 +8,7 @@ export const ProgressBadge = (props) => {
         progressWidth: 7,
         barWidth: 0.75,
         badgeBgColor: "#193d37",
+        //progressPosition inner || outer , default: center
         ...props
     }
     if(props.badgeSrc===undefined){
@@ -23,16 +24,21 @@ return (<div
 
     }}
 >
-    <img
-        src={props.badgeSrc}
-        alt="badge"
-        width="100%"
-        height="100%"
-        style={{
-            display: "block",
-            borderRadius: "50%",
-        }}
-    />
+   <div
+   style={{
+       padding: props.bgBarWidth+"%",
+   }}>
+       <img
+           src={props.badgeSrc}
+           alt="badge"
+           width="100%"
+           height="100%"
+           style={{
+               display: "block",
+               borderRadius: "50%",
+           }}
+       />
+   </div>
     <div
         style={{
             position: "absolute",
@@ -51,9 +57,9 @@ return (<div
             bgWidth={props.bgBarWidth}
             bgColor={props.bgBarColor}
             baseCircPercent={props.barWidth}
+            progressPosition={props.progressPosition}
             style={{
-
-                zIndex: 1, // Set a higher z-index value if needed
+                zIndex: 1,
             }}
         />
     </div>
@@ -66,6 +72,13 @@ const CircularProgressBar=(props)=>{
     const r=viewBoxDimentions/2
     const baseCircLength=Math.PI*(r-props.bgWidth/2)*props.baseCircPercent*2
     const progressCircLength=Math.PI*(r-props.bgWidth+props.progressWidth/2)*props.baseCircPercent*2
+    let progressRad=r-props.bgWidth/2
+    if(props.progressPosition==="inner"){
+        progressRad=r-props.bgWidth+props.progressWidth/2
+    }
+    else if(props.progressPosition==="outer"){
+        progressRad=r-props.progressWidth/2
+    }
 
     return(
         <svg width={"100%"} viewBox={`0 0 ${viewBoxDimentions} ${viewBoxDimentions}`}>
@@ -82,7 +95,7 @@ const CircularProgressBar=(props)=>{
                 <circle
                     cx={r}
                     cy={r}
-                    r={r-props.bgWidth+props.progressWidth/2}
+                    r={progressRad}
                     fill="none"
                     stroke={props.progressColor}
                     strokeWidth={props.progressWidth}
